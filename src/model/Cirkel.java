@@ -44,6 +44,7 @@ public class Cirkel {
         return 2 * Math.PI * straal;
     }
 
+
     public double geefOppervlak() {
         return Math.PI * straal * straal;
     }
@@ -60,6 +61,12 @@ public class Cirkel {
         return straal;
     }
 
+
+    /**
+     * Stel een nieuwe straal in voor deze cirkel, de straal moet positief zijn.
+     *
+     * @param straal De nieuwe straal voor deze cirkel
+     */
     public void setStraal(double straal) {
         if (straal <= 0) {
             System.err.printf("De straal moet positief zijn. De straal wordt op %.1f gezet.\n", DEFAULT_STRAAL);
