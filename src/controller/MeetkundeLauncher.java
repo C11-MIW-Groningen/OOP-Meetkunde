@@ -9,16 +9,16 @@ import model.Cirkel;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
-        Cirkel mijnCirkel = new Cirkel();
-        mijnCirkel.kleur = "paars";
-
-        mijnCirkel.geefDefinitie();
-        System.out.println("De straal van de cirkel is: " + mijnCirkel.straal);
-        System.out.println("En zijn omtrek is: " + mijnCirkel.geefOmtrek());
-    }
-
-    public static void printOmtrekVanCirkel(Cirkel cirkel) {
-
+        Cirkel mijnDefaultCirkel = new Cirkel();
+        System.out.println(mijnDefaultCirkel.getStraal());
+        System.out.println(mijnDefaultCirkel.geefOppervlak());
+        System.out.println(mijnDefaultCirkel.vertelOverGrootte());
+        mijnDefaultCirkel.setStraal(3);
+        System.out.println(mijnDefaultCirkel.geefOppervlak());
+        System.out.println(mijnDefaultCirkel.vertelOverGrootte());
+        mijnDefaultCirkel.setStraal(6);
+        System.out.println(mijnDefaultCirkel.geefOppervlak());
+        System.out.println(mijnDefaultCirkel.vertelOverGrootte());
     }
 
 }
