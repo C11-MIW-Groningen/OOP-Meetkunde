@@ -37,12 +37,12 @@ public class Cirkel {
     }
 
 
-    public double geefOppervlak() {
+    public double geefOppervlakte() {
         return Math.PI * straal * straal;
     }
 
     public String vertelOverGrootte() {
-        if (geefOppervlak() > GRENSWAARDE_GROOT_FIGUUR) {
+        if (geefOppervlakte() > GRENSWAARDE_GROOT_FIGUUR) {
             return "Ik ben groot!!!";
         } else {
             return "Zij zijn groot en ik ben klein en dat is NIET eerlijk.";
