@@ -25,17 +25,15 @@ public class Cirkel {
     }
 
     public Cirkel(double straal) {
-        setStraal(straal);
-        this.middelpuntX = DEFAULT_MIDDELPUNT_X;
-        this.middelpuntY = DEFAULT_MIDDELPUNT_Y;
-        this.kleur = DEFAULT_KLEUR;
+        this(straal, DEFAULT_MIDDELPUNT_X, DEFAULT_MIDDELPUNT_Y, DEFAULT_KLEUR);
+    }
+
+    public Cirkel(String kleur) {
+        this(DEFAULT_STRAAL, DEFAULT_MIDDELPUNT_X, DEFAULT_MIDDELPUNT_Y, kleur);
     }
 
     public Cirkel() { // default constructor
-        this.setStraal(DEFAULT_STRAAL);
-        this.middelpuntX = DEFAULT_MIDDELPUNT_X;
-        this.middelpuntY = DEFAULT_MIDDELPUNT_Y;
-        this.kleur = DEFAULT_KLEUR;
+        this(DEFAULT_STRAAL);
     }
 
     public static String geefDefinitie() {
