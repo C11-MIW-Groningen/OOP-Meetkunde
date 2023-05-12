@@ -5,6 +5,8 @@ import model.Figuur;
 import model.Punt;
 import model.Rechthoek;
 
+import java.time.LocalDate;
+
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Purpose of the program
@@ -12,17 +14,18 @@ import model.Rechthoek;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
-        System.out.println(Rechthoek.geefDefinitie());
-        Rechthoek[] mijnRechthoekArray = new Rechthoek[3];
-        mijnRechthoekArray[0] = new Rechthoek(4, 3, new Punt(2, 5), "blauw");
-        mijnRechthoekArray[1] = new Rechthoek();
-        mijnRechthoekArray[2] = new Rechthoek(25, 10);
-        for (int arrayTeller = 0; arrayTeller < mijnRechthoekArray.length; arrayTeller++) {
-            toonInformatie(mijnRechthoekArray[arrayTeller]);
-        }
+        LocalDate vandaag = LocalDate.now();
+        System.out.println(vandaag);
 
-        Cirkel cirkel = new Cirkel();
-        toonInformatie(cirkel);
+        LocalDate beginVan2023 = LocalDate.parse("2023-01-01");
+        System.out.println(beginVan2023);
+
+        LocalDate koningsdag2023 = LocalDate.of(2023, 4, 27);
+        System.out.println(koningsdag2023.minusMonths(14));
+
+        if (koningsdag2023.isBefore(vandaag)) {
+            System.out.println("Is koningsdag nu geweest of niet? Ja");
+        }
     }
 
     public static void toonInformatie(Figuur figuur) {
