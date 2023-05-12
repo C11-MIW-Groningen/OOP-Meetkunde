@@ -4,20 +4,17 @@ package model;
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Purpose of the program
  */
-public class Cirkel {
-    private static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
-
+public class Cirkel extends Figuur {
     private static final double DEFAULT_STRAAL = 1;
     private static final String DEFAULT_KLEUR = "paars";
 
     private double straal;
     private Punt middelpunt;
-    private String kleur;
 
     public Cirkel(double straal, Punt middelpunt, String kleur) {
+        super(kleur);
         setStraal(straal);
         this.middelpunt = middelpunt;
-        this.kleur = kleur;
     }
 
     public Cirkel(double straal) {
@@ -32,21 +29,14 @@ public class Cirkel {
         return "Een cirkel is een verzameling punten, die allemaal dezelfde afstand tot een middelpunt hebben.";
     }
 
+    @Override
     public double geefOmtrek() {
         return 2 * Math.PI * straal;
     }
 
-
+    @Override
     public double geefOppervlakte() {
         return Math.PI * straal * straal;
-    }
-
-    public String vertelOverGrootte() {
-        if (geefOppervlakte() > GRENSWAARDE_GROOT_FIGUUR) {
-            return "Ik ben groot!!!";
-        } else {
-            return "Zij zijn groot en ik ben klein en dat is NIET eerlijk.";
-        }
     }
 
     public double getStraal() {

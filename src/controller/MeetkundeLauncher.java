@@ -27,6 +27,9 @@ public class MeetkundeLauncher {
             System.out.println(mijnRechthoekArray[arrayTeller].
                     vertelOverGrootte());
         }
+
+        Cirkel cirkel = new Cirkel();
+        cirkel.vertelOverGrootte();
     }
 
 }
