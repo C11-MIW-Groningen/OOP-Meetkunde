@@ -4,7 +4,7 @@ package model;
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Algemene eigenschappen van een meetkundig figuur
  */
-public class Figuur {
+public abstract class Figuur {
     private static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
     private static final String DEFAULT_KLEUR = "rood";
 
@@ -22,13 +22,8 @@ public class Figuur {
         return "Een figuur is een verzameling punten";
     }
 
-    public double geefOmtrek() {
-        return 0.0;
-    }
-
-    public double geefOppervlakte() {
-        return 0.0;
-    }
+    public abstract double geefOmtrek();
+    public abstract double geefOppervlakte();
 
     public String vertelOverGrootte() {
         if (geefOppervlakte() > GRENSWAARDE_GROOT_FIGUUR) {
