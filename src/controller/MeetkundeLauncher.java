@@ -1,6 +1,7 @@
 package controller;
 
 import model.Cirkel;
+import model.Figuur;
 import model.Punt;
 import model.Rechthoek;
 
@@ -17,12 +18,16 @@ public class MeetkundeLauncher {
         mijnRechthoekArray[1] = new Rechthoek();
         mijnRechthoekArray[2] = new Rechthoek(25, 10);
         for (int arrayTeller = 0; arrayTeller < mijnRechthoekArray.length; arrayTeller++) {
-            System.out.println(mijnRechthoekArray[arrayTeller]);
-            System.out.println();
+            toonInformatie(mijnRechthoekArray[arrayTeller]);
         }
 
         Cirkel cirkel = new Cirkel();
-        System.out.println(cirkel);
+        toonInformatie(cirkel);
+    }
+
+    public static void toonInformatie(Figuur figuur) {
+        System.out.println(figuur);
+        System.out.println();
     }
 
 }
