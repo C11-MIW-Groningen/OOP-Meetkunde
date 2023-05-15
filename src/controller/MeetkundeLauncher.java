@@ -6,6 +6,7 @@ import model.Punt;
 import model.Rechthoek;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
@@ -14,17 +15,18 @@ import java.time.LocalDate;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
-        LocalDate vandaag = LocalDate.now();
-        System.out.println(vandaag);
+        ArrayList<Cirkel> mijnCirkels = new ArrayList<>();
+        mijnCirkels.add(new Cirkel(3, new Punt(1, 4), "groen"));
+        mijnCirkels.add(new Cirkel());
+        mijnCirkels.add(new Cirkel(6));
 
-        LocalDate beginVan2023 = LocalDate.parse("2023-01-01");
-        System.out.println(beginVan2023);
+        for (int cirkel = 0; cirkel < mijnCirkels.size(); cirkel++) {
+            System.out.println(mijnCirkels.get(cirkel));
+        }
 
-        LocalDate koningsdag2023 = LocalDate.of(2023, 4, 27);
-        System.out.println(koningsdag2023.minusMonths(14));
-
-        if (koningsdag2023.isBefore(vandaag)) {
-            System.out.println("Is koningsdag nu geweest of niet? Ja");
+        // enhanced for
+        for (Cirkel cirkelUitDeLijst : mijnCirkels) {
+            System.out.println(cirkelUitDeLijst);
         }
     }
 
