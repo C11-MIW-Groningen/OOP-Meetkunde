@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
@@ -68,6 +69,9 @@ public class Oppervlak extends Figuur {
     @Override
     public String toString() {
         String eenReturn = "";
+
+        Collections.sort(mijnFiguren);
+        Collections.reverse(mijnFiguren);
 
         for (Figuur figuur : mijnFiguren) {
             eenReturn += figuur.toString() + "\n\n";
