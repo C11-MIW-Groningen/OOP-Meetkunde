@@ -7,7 +7,7 @@ import java.util.Collections;
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * 2d ruimte om figuren op te plaatsen
  */
-public class Oppervlak extends Figuur {
+public class Oppervlak {
     private double lengte;
     private double breedte;
     private ArrayList<Figuur> mijnFiguren;
@@ -19,29 +19,13 @@ public class Oppervlak extends Figuur {
     }
 
     public void voegFiguurToe(Figuur figuur) {
-        if (figuurPastAlsVormInOppervlak(figuur)) {
+        if (figuur.pastInOppervlak(lengte, breedte)) {
             mijnFiguren.add(figuur);
             System.out.println("Dit figuur is toegevoegd.");
         } else {
-            System.out.println("Dit figuur is te groot.");
+            System.out.println("Dit figuur past niet.");
         }
 
-    }
-
-    private boolean figuurPastAlsVormInOppervlak(Figuur figuur) {
-        boolean eenReturn = false;
-
-        if (figuur instanceof Rechthoek) {
-            if (((Rechthoek) figuur).getLengte() <= lengte && ((Rechthoek) figuur).getBreedte() <= breedte) {
-                eenReturn = true;
-            }
-        } else if (figuur instanceof Cirkel) {
-            if (((Cirkel) figuur).getStraal() <= breedte / 2 && ((Cirkel) figuur).getStraal() <= lengte / 2) {
-                eenReturn = true;
-            }
-        }
-
-        return eenReturn;
     }
 
     public ArrayList<Figuur> geefFigurenMetGrotereOppervlakte(double grenswaarde) {
@@ -57,21 +41,10 @@ public class Oppervlak extends Figuur {
     }
 
     @Override
-    public double geefOmtrek() {
-        return 0;
-    }
-
-    @Override
-    public double geefOppervlakte() {
-        return 0;
-    }
-
-    @Override
     public String toString() {
         String eenReturn = "";
 
         Collections.sort(mijnFiguren);
-        Collections.reverse(mijnFiguren);
 
         for (Figuur figuur : mijnFiguren) {
             eenReturn += figuur.toString() + "\n\n";

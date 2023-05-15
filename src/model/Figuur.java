@@ -4,7 +4,7 @@ package model;
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Algemene eigenschappen van een meetkundig figuur
  */
-public abstract class Figuur implements Comparable<Figuur> {
+public abstract class Figuur implements Comparable<Figuur>, ToelaatbaarInOppervlak {
     private static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
     private static final String DEFAULT_KLEUR = "rood";
 
