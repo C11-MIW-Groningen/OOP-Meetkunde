@@ -1,9 +1,6 @@
 package controller;
 
-import model.Cirkel;
-import model.Figuur;
-import model.Punt;
-import model.Rechthoek;
+import model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,24 +12,25 @@ import java.util.ArrayList;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
-        ArrayList<Cirkel> mijnCirkels = new ArrayList<>();
-        mijnCirkels.add(new Cirkel(3, new Punt(1, 4), "groen"));
-        mijnCirkels.add(new Cirkel());
-        mijnCirkels.add(new Cirkel(6));
-
-        for (int cirkel = 0; cirkel < mijnCirkels.size(); cirkel++) {
-            System.out.println(mijnCirkels.get(cirkel));
-        }
-
-        // enhanced for
-        for (Cirkel cirkelUitDeLijst : mijnCirkels) {
-            System.out.println(cirkelUitDeLijst);
-        }
+        Oppervlak oppervlak2 = new Oppervlak(10, 7);
+        oppervlak2.voegFiguurToe(new Rechthoek(4, 3, new Punt(0, 7), "rood"));
+        oppervlak2.voegFiguurToe(new Cirkel(4, new Punt(1.5, 1.5), "geel"));
+        oppervlak2.voegFiguurToe(new Rechthoek(9, 8, new Punt(3, 2), "groen"));
+        oppervlak2.voegFiguurToe(new Rechthoek(4, 1, new Punt(5, 7), "oranje"));
+        oppervlak2.voegFiguurToe(new Cirkel(2, new Punt(8, 5), "paars"));
+        oppervlak2.voegFiguurToe(new Rechthoek(11, 3, new Punt(5, 3), "blauw"));
+        toonInformatie(oppervlak2.geefFigurenMetGrotereOppervlakte(10));
     }
 
     public static void toonInformatie(Figuur figuur) {
         System.out.println(figuur);
-        System.out.println();
+    }
+
+    public static void toonInformatie(ArrayList<Figuur> figuren) {
+        for (Figuur figuur : figuren) {
+            toonInformatie(figuur);
+            System.out.println();
+        }
     }
 
 }
