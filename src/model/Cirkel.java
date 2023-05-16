@@ -61,11 +61,9 @@ public class Cirkel extends Figuur {
      */
     public void setStraal(double straal) {
         if (straal <= 0) {
-            System.err.printf("De straal moet positief zijn. De straal wordt op %.1f gezet.\n", DEFAULT_STRAAL);
-            this.straal = DEFAULT_STRAAL;
-        } else {
-            this.straal = straal;
+            throw new IllegalArgumentException("De straal moet positief zijn.");
         }
+        this.straal = straal;
     }
 
     public Punt getMiddelpunt() {
