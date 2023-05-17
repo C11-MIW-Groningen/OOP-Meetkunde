@@ -1,6 +1,8 @@
 package controller;
 
+import database.CirkelDAO;
 import database.DBaccess;
+import database.FiguurDAO;
 import database.PuntDAO;
 import model.*;
 
@@ -24,13 +26,9 @@ public class MeetkundeLauncher {
     public static void main(String[] args) {
         DBaccess dBaccess = new DBaccess("figuren", "userFiguren", "userFigurenPW");
         dBaccess.openConnection();
-        PuntDAO puntDAO = new PuntDAO(dBaccess);
+        CirkelDAO cirkelDAO = new CirkelDAO(dBaccess);
 
-        puntDAO.slaPuntOp(new Punt(4, 5));
-
-        for (Punt punt : puntDAO.getAll()) {
-            System.out.println(punt);
-        }
+        cirkelDAO.slaCirkelOp(new Cirkel(5, new Punt(3, 7), "oranje"));
     }
 
     public static void toonInformatie(Figuur figuur) {
