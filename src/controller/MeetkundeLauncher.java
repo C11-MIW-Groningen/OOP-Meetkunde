@@ -1,15 +1,14 @@
 package controller;
 
+import database.DBaccess;
+import database.PuntDAO;
 import model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,46 +22,14 @@ import java.util.Scanner;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
+        DBaccess dBaccess = new DBaccess("figuren", "userFiguren", "userFigurenPW");
+        dBaccess.openConnection();
+        PuntDAO puntDAO = new PuntDAO(dBaccess);
 
-        String mysqlDriver = "com.mysql.cj.jdbc.Driver";
-        String urlPrefix = "jdbc:mysql://localhost:3306/";
-        String connectionSetting  ="?useSSL=false" +
-                "&allowPublicKeyRetrieval=true" +
-                "&useJDBCCompliantTimezoneShift=true" +
-                "&useLegacyDatetimeCode=false" +
-                "&serverTimezone=UTC";
+        puntDAO.slaPuntOp(new Punt(4, 5));
 
-        String databaseName = "Figuren";
-        String mainUser = "userFiguren";
-        String mainUserPassword = "userFigurenPW";
-
-        Connection connection = null;
-
-        System.out.print("Driver laden ... ");
-        try {
-            Class.forName(mysqlDriver);
-            System.out.println("driver geladen");
-
-            connection = DriverManager.getConnection(urlPrefix + databaseName + connectionSetting,
-                    mainUser, mainUserPassword);
-            System.out.println("Verbinding succesvol");
-        } catch (ClassNotFoundException e) {
-            System.out.println("driver niet gevonden.");
-        } catch (SQLException sqlException) {
-            System.out.println("SQL exception: " + sqlException.getMessage());
-        }
-
-        if (connection != null) {
-            String sql = "INSERT INTO punt VALUES (3, 5)";
-
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.executeUpdate();
-                connection.close();
-                System.out.println("Alles is gelukt");
-            } catch (SQLException sqlException) {
-                System.out.println("SQL exception: " + sqlException.getMessage());
-            }
+        for (Punt punt : puntDAO.getAll()) {
+            System.out.println(punt);
         }
     }
 
