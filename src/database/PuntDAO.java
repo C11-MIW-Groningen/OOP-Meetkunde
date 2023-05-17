@@ -11,22 +11,20 @@ import java.util.ArrayList;
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Purpose of the program
  */
-public class PuntDAO {
-
-    private DBaccess dBaccess;
+public class PuntDAO extends AbstractDAO {
 
     public PuntDAO(DBaccess dBaccess) {
-        this.dBaccess = dBaccess;
+        super(dBaccess);
     }
 
     public void slaPuntOp(Punt punt) {
         String sql = "INSERT INTO punt VALUES (?, ?);";
 
         try {
-            PreparedStatement preparedStatement = dBaccess.getConnection().prepareStatement(sql);
+            setupPreparedStatement(sql);
             preparedStatement.setDouble(1, punt.getxCoordinaat());
             preparedStatement.setDouble(2, punt.getyCoordinaat());
-            preparedStatement.executeUpdate();
+            executeManipulateStatement();
         } catch (SQLException sqlException) {
             System.out.println("SQL exception: " + sqlException.getMessage());
         }
@@ -38,8 +36,8 @@ public class PuntDAO {
         String sql = "SELECT xcoordinaat, ycoordinaat FROM punt;";
 
         try {
-            PreparedStatement preparedStatement = dBaccess.getConnection().prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            setupPreparedStatement(sql);
+            ResultSet resultSet = executeSelectStatement();
             while (resultSet.next()) {
                 double xCoordinaat = resultSet.getDouble(1);
                 double yCoordinaat = resultSet.getDouble(2);

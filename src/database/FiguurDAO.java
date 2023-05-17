@@ -11,11 +11,10 @@ import java.sql.Statement;
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * Regelt het ophalen en wegschrijven van Figuren naar de DB
  */
-public class FiguurDAO {
-    private DBaccess dBaccess;
+public class FiguurDAO extends AbstractDAO {
 
     public FiguurDAO(DBaccess dBaccess) {
-        this.dBaccess = dBaccess;
+        super(dBaccess);
     }
 
     public int slaFiguurOp(Figuur figuur) {
@@ -23,16 +22,10 @@ public class FiguurDAO {
         int primaryKey = -1;
 
         try {
-            PreparedStatement preparedStatement = dBaccess.getConnection()
-                    .prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            setupPreparedStatementWithKey(sql);
             preparedStatement.setString(1, figuur.getKleur());
             preparedStatement.executeUpdate();
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-
-            if (resultSet.next()) {
-                primaryKey = resultSet.getInt(1);
-            }
-
+            primaryKey = executeInsertStatementWithKey();
         } catch (SQLException sqlException) {
             System.out.println("SQL exception: " + sqlException.getMessage());
         }
